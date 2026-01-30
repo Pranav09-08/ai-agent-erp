@@ -12,6 +12,10 @@ client = Groq(api_key=os.environ["GROQ_API_KEY"])
 
 app = FastAPI()
 
+@app.get("/check")
+def check():
+    return {"status": "ok"}
+
 @app.post("/generate-quotation", response_model=QuotationOutput)
 def generate_quotation(data: QuotationInput):
     try:
